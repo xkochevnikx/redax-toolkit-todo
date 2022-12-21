@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteTodo, todoCompleted } from "../../store/todoSlice";
+import { asyncDeleteTodo, asyncTodoCompleted } from "../../store/todoSlice";
 
 const TodoItem = () => {
   const todos = useSelector(state => state.todos.todos);
@@ -32,11 +32,11 @@ const TodoItem = () => {
           <li style={listStyle} key={todo.id}>
             <input
               type="checkbox"
-              onChange={() => dispatch(todoCompleted(todo.id))}
+              onChange={() => dispatch(asyncTodoCompleted(todo.id))}
             />
-            <span>{todo.text}</span>
+            <span>{todo.title}</span>
             <span
-              onClick={() => dispatch(deleteTodo(todo.id))}
+              onClick={() => dispatch(asyncDeleteTodo(todo.id))}
               style={deleteTodoBtn}>
               &times;
             </span>
